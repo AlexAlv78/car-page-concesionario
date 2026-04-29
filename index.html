@@ -423,12 +423,14 @@
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
     }
+
     .modal.show { display: block; }
     .modal-overlay {
       position: absolute;
       width: 100%;
       height: 100%;
     }
+
     .modal-content {
       position: relative;
       background: var(--color-card);
@@ -440,6 +442,7 @@
       border-radius: 8px;
       color: var(--color-white);
     }
+
     .modal-close {
       position: absolute;
       top: 10px;
@@ -450,6 +453,7 @@
       font-size: 24px;
       cursor: pointer;
     }
+
     .modal h2 {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 24px;
@@ -459,6 +463,37 @@
     .modal p {
       line-height: 1.6;
     }
+
+    .slider {
+      position: relative;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    
 
   </style>
 </head>
@@ -559,16 +594,22 @@
   <main class="car-grid" id="car-grid">
 
     <!-- COCHE 1 -------------------------------------------------- -->
-    <article class="car-card" data-type="deportivo">
-      <div class="car-img-wrapper">
-        <!--
+    <!--
           Reemplaza el src con la ruta de tu foto:
           - Si es local:   src="fotos/bmw-serie4.jpg"
           - Si es online:  src="https://tudominio.com/fotos/bmw.jpg"
           El alt debe describir el coche para SEO y accesibilidad.
-        -->
-        <img src="./images/mustang.jpg" alt="MUSTANG 2015 CONVERTIBLE V6" loading="lazy" />
+    -->
+    <article class="car-card" data-type="deportivo">
+      <div class="car-img-wrapper slider">
+        <img src="./images/mustang.jpg" class="slide active" alt="MUSTANG 2015 CONVERTIBLE lado derecho atras" loading="lazy" />
+        <img src="./images/atras.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 atras" loading="lazy" />
+        <img src="./images/atrasder.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 atras derecho" loading="lazy" />
+        <img src="./images/mustangfrente.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 enfrente" loading="lazy" />
+        <img src="./images/mustangfrenteder.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 enfrente derecho" loading="lazy" />
         <span class="car-badge">Destacado</span>
+        <button class="prev">‹</button>
+        <button class="next">›</button>
       </div>
       <div class="car-body">
         <p class="car-make">FORDS</p>
@@ -838,6 +879,27 @@
     function closeModal(type) {
       document.getElementById('modal-' + type).classList.remove('show');
     }
+    document.querySelectorAll('.slider').forEach(slider => {
+    let index = 0;
+    const slides = slider.querySelectorAll('.slide');
+    const prev = slider.querySelector('.prev');
+    const next = slider.querySelector('.next');
+
+    function showSlide(i) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[i].classList.add('active');
+    }
+
+    prev.addEventListener('click', () => {
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
+    });
+
+    next.addEventListener('click', () => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    });
+  });
   </script>
 
   <!-- Modales -->
@@ -861,6 +923,5 @@
       <p><strong>Instagram:</strong> <a href="https://instagram.com/al.exito_78" target="_blank">@al.exito_78</a></p>
     </div>
   </div>
-
 </body>
 </html>
