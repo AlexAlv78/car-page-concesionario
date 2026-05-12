@@ -289,7 +289,7 @@
       padding: 3px 8px;
     }
     /* Variante de badge: estilo reservado */
-    .car-badge.reserved {
+    .car-badge.sold {
       background: #2a2a2a;
       color: var(--color-accent);
       border: 1px solid var(--color-accent);
@@ -542,6 +542,41 @@
       right: 10px;
     }
 
+    .info-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--color-accent);
+    background: transparent;
+    color: var(--color-accent);
+    font-size: 13px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    margin-left: auto;
+    align-self: center;
+  }
+
+  .info-btn:hover {
+    background: var(--color-accent);
+    color: black;
+    transform: scale(1.08);
+  }
+
+  .car-location {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.7);
+    color: var(--color-white);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--color-accent);
+    backdrop-filter: blur(4px);
+  }
+
   </style>
 </head>
 <body>
@@ -654,7 +689,8 @@
         <img src="./images/atrasder.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 atras derecho" loading="lazy" />
         <img src="./images/mustangfrente.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 enfrente" loading="lazy" />
         <img src="./images/mustangfrenteder.jpg" class="slide" alt="MUSTANG 2015 CONVERTIBLE V6 enfrente derecho" loading="lazy" />
-        <span class="car-badge">Destacado</span>
+        <span class="car-badge">DISPONIBLE</span>
+        <span class="car-location">CDMX</span>
         <button class="prev">‹</button>
         <button class="next">›</button>
       </div>
@@ -674,6 +710,7 @@
             <span class="spec-val">304 CV</span>
             <span class="spec-key">Potencia</span>
           </div>
+          <button class="info-btn" onclick="openCarInfo('MUSTANG')">i</button>
         </div>
         <div class="car-footer">
           <div>
@@ -681,7 +718,7 @@
             <p class="price">$235,000 MX</p>
           </div>
           <!-- Enlaza a tu ficha de coche, WhatsApp o modal -->
-          <button class="btn-outline" onclick="contactCar('MUSTANG 2015 CONVERTIBLE V6')">Cotizar Ahora</button>
+          <button class="btn-outline" onclick="contactCar('MUSTANG 2015 CONVERTIBLE V6')">Mandar Mensaje</button>
         </div>
       </div>
     </article>
@@ -695,7 +732,8 @@
         <img src="./images/escapeladoizquierdoatrás.jpg" class="slide" alt="ESCAPE 2007 V6 lado izquierdo atras" loading="lazy" />
         <img src="./images/escapedentro.jpg" class="slide" alt="ESCAPE 2007 V6 centro" loading="lazy" />
         <img src="./images/escapeconsola.jpg" class="slide" alt="ESCAPE 2007 V6 consola" loading="lazy" />
-        <span class="car-badge">Destacado</span>
+        <span class="car-badge">DISPONIBLE</span>
+        <span class="car-location">CUU</span>
         <button class="prev">‹</button>
         <button class="next">›</button>
       </div>
@@ -706,92 +744,71 @@
           <div class="spec"><span class="spec-val">2007</span><span class="spec-key">Año</span></div>
           <div class="spec"><span class="spec-val">289000</span><span class="spec-key">Kms</span></div>
           <div class="spec"><span class="spec-val">200 CV</span><span class="spec-key">Potencia</span></div>
+          <button class="info-btn" onclick="openCarInfo('ESCAPE')">i</button>
         </div>
         <div class="car-footer">
           <div><p class="price-label">Precio</p><p class="price">$70,000 MX</p></div>
-          <button class="btn-outline" onclick="contactCar('FORD ESCAPE 2007 V6')">Cotizar Ahora</button>
+          <button class="btn-outline" onclick="contactCar('FORD ESCAPE 2007 V6')">Mandar Mensaje</button>
         </div>
       </div>
     </article>
 
     <!-- COCHE 3 (con badge "Reservado") -------------------------- -->
-    <article class="car-card" data-type="sedan">
-      <div class="car-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=600&q=80" alt="Mercedes-Benz Clase C 220d 2023" loading="lazy" />
-        <span class="car-badge reserved">Reservado</span>
+    <article class="car-card" data-type="suv">
+      <div class="car-img-wrapper slider">
+        <img src="./images/escapeladochoatr.jpg" class="slide active" alt="ESCAPE 2007 V6 lado derecho atras" loading="lazy" />
+        <img src="./images/escapeladochofre.jpg" class="slide" alt="ESCAPE 2007 V6 lado izquierdo enfrente" loading="lazy" />
+        <img src="./images/escapeladocopifren.jpg" class="slide" alt="ESCAPE 2007 V6 lado derecho enfrente" loading="lazy" />
+        <img src="./images/escapeladoizquierdoatrás.jpg" class="slide" alt="ESCAPE 2007 V6 lado izquierdo atras" loading="lazy" />
+        <img src="./images/escapedentro.jpg" class="slide" alt="ESCAPE 2007 V6 centro" loading="lazy" />
+        <img src="./images/escapeconsola.jpg" class="slide" alt="ESCAPE 2007 V6 consola" loading="lazy" />
+        <span class="car-badge sold">VENDIDO</span>
+        <span class="car-location">CUU</span>
+        <button class="prev">‹</button>
+        <button class="next">›</button>
       </div>
       <div class="car-body">
-        <p class="car-make">Mercedes-Benz</p>
-        <p class="car-model">Clase C 220d AMG Line</p>
+        <p class="car-make">FORD</p>
+        <p class="car-model">ESCAPE 2007 V6</p>
         <div class="car-specs">
-          <div class="spec"><span class="spec-val">2023</span><span class="spec-key">Año</span></div>
-          <div class="spec"><span class="spec-val">12.000 km</span><span class="spec-key">Kms</span></div>
+          <div class="spec"><span class="spec-val">2007</span><span class="spec-key">Año</span></div>
+          <div class="spec"><span class="spec-val">289000</span><span class="spec-key">Kms</span></div>
           <div class="spec"><span class="spec-val">200 CV</span><span class="spec-key">Potencia</span></div>
+          <button class="info-btn" onclick="openCarInfo('ESCAPE')">i</button>
         </div>
         <div class="car-footer">
-          <div><p class="price-label">Precio</p><p class="price">44.200 €</p></div>
-          <button class="btn-outline" onclick="contactCar('Mercedes-Benz Clase C')">Cotizar Ahora</button>
+          <div><p class="price-label">Precio</p><p class="price">$70,000 MX</p></div>
+          <button class="btn-outline" onclick="contactCar('FORD ESCAPE 2007 V6')">Mandar Mensaje</button>
         </div>
       </div>
     </article>
 
     <!-- COCHE 4 -------------------------------------------------- -->
-    <article class="car-card" data-type="familiar">
-      <div class="car-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80" alt="Volkswagen Passat Variant 2020" loading="lazy" />
-      </div>
-      <div class="car-body">
-        <p class="car-make">Volkswagen</p>
-        <p class="car-model">Passat Variant 2.0 TDI</p>
-        <div class="car-specs">
-          <div class="spec"><span class="spec-val">2020</span><span class="spec-key">Año</span></div>
-          <div class="spec"><span class="spec-val">62.000 km</span><span class="spec-key">Kms</span></div>
-          <div class="spec"><span class="spec-val">150 CV</span><span class="spec-key">Potencia</span></div>
-        </div>
-        <div class="car-footer">
-          <div><p class="price-label">Precio</p><p class="price">22.900 €</p></div>
-          <button class="btn-outline" onclick="contactCar('VW Passat Variant')">Cotizar Ahora</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- COCHE 5 -------------------------------------------------- -->
     <article class="car-card" data-type="suv">
-      <div class="car-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80" alt="Porsche Macan S 2022" loading="lazy" />
-        <span class="car-badge">Nuevo stock</span>
+      <div class="car-img-wrapper slider">
+        <img src="./images/escapeladochoatr.jpg" class="slide active" alt="ESCAPE 2007 V6 lado derecho atras" loading="lazy" />
+        <img src="./images/escapeladochofre.jpg" class="slide" alt="ESCAPE 2007 V6 lado izquierdo enfrente" loading="lazy" />
+        <img src="./images/escapeladocopifren.jpg" class="slide" alt="ESCAPE 2007 V6 lado derecho enfrente" loading="lazy" />
+        <img src="./images/escapeladoizquierdoatrás.jpg" class="slide" alt="ESCAPE 2007 V6 lado izquierdo atras" loading="lazy" />
+        <img src="./images/escapedentro.jpg" class="slide" alt="ESCAPE 2007 V6 centro" loading="lazy" />
+        <img src="./images/escapeconsola.jpg" class="slide" alt="ESCAPE 2007 V6 consola" loading="lazy" />
+        <span class="car-badge sold">VENDIDO</span>
+        <span class="car-location">CDMX</span>
+        <button class="prev">‹</button>
+        <button class="next">›</button>
       </div>
       <div class="car-body">
-        <p class="car-make">Porsche</p>
-        <p class="car-model">Macan S 265CV PDK</p>
+        <p class="car-make">FORD</p>
+        <p class="car-model">ESCAPE 2007 V6</p>
         <div class="car-specs">
-          <div class="spec"><span class="spec-val">2022</span><span class="spec-key">Año</span></div>
-          <div class="spec"><span class="spec-val">19.500 km</span><span class="spec-key">Kms</span></div>
-          <div class="spec"><span class="spec-val">265 CV</span><span class="spec-key">Potencia</span></div>
+          <div class="spec"><span class="spec-val">2007</span><span class="spec-key">Año</span></div>
+          <div class="spec"><span class="spec-val">289000</span><span class="spec-key">Kms</span></div>
+          <div class="spec"><span class="spec-val">200 CV</span><span class="spec-key">Potencia</span></div>
+          <button class="info-btn" onclick="openCarInfo('ESCAPE')">i</button>
         </div>
         <div class="car-footer">
-          <div><p class="price-label">Precio</p><p class="price">67.800 €</p></div>
-          <button class="btn-outline" onclick="contactCar('Porsche Macan S')">Cotizar Ahora</button>
-        </div>
-      </div>
-    </article>
-
-    <!-- COCHE 6 -------------------------------------------------- -->
-    <article class="car-card" data-type="deportivo">
-      <div class="car-img-wrapper">
-        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=80" alt="Audi RS3 Sportback 2023" loading="lazy" />
-      </div>
-      <div class="car-body">
-        <p class="car-make">Audi</p>
-        <p class="car-model">RS3 Sportback 400CV</p>
-        <div class="car-specs">
-          <div class="spec"><span class="spec-val">2023</span><span class="spec-key">Año</span></div>
-          <div class="spec"><span class="spec-val">8.200 km</span><span class="spec-key">Kms</span></div>
-          <div class="spec"><span class="spec-val">400 CV</span><span class="spec-key">Potencia</span></div>
-        </div>
-        <div class="car-footer">
-          <div><p class="price-label">Precio</p><p class="price">74.500 €</p></div>
-          <button class="btn-outline" onclick="contactCar('Audi RS3 Sportback')">Información Del Vehículo</button>
+          <div><p class="price-label">Precio</p><p class="price">$70,000 MX</p></div>
+          <button class="btn-outline" onclick="contactCar('FORD ESCAPE 2007 V6')">Mandar Mensaje</button>
         </div>
       </div>
     </article>
@@ -998,6 +1015,42 @@
       currentIndex = (currentIndex + 1) % currentImages.length;
       updateModalImage();
     }
+
+    function openCarInfo(car) {
+      const title = document.getElementById('car-info-title');
+      const content = document.getElementById('car-info-content');
+      if (car === 'MUSTANG') {
+        title.textContent = 'MUSTANG 2015 CONVERTIBLE V6';
+        content.innerHTML = `
+          <p><strong>Transmisión:</strong> Automática</p>
+          <p><strong>Motor:</strong> V6 3.7L</p>
+          <p><strong>Color:</strong> Gris Oxford</p>
+          <p><strong>Interior:</strong> Tela gris</p>
+          <p><strong>Documentación:</strong> Nacionalizado Decreto</p>
+          <p><strong>A/C:</strong> funcionando perfectamente</p>
+          <p><strong>Funcionamiento Adicional:</strong> Encendido a distancia, paletas para manejo sport, capota en perfecto funcionamiento, sin fugas o fallas </p>
+          <p><strong>Detalles:</strong> Excelente estado mecánico, leves detalles esteticos, apreciables en las fotos</p>
+        `;
+      }
+      if (car === 'ESCAPE') {
+        title.textContent = 'MUSTANG 2015 CONVERTIBLE V6';
+        content.innerHTML = `
+          <p><strong>Transmisión:</strong> Automática</p>
+          <p><strong>Motor:</strong> V6 3.0L</p>
+          <p><strong>Color:</strong> Gris Plata</p>
+          <p><strong>Interior:</strong> Piel Negra</p>
+          <p><strong>Documentación:</strong> Mexicana De Agencia</p>
+          <p><strong>A/C:</strong> Funcionando Sin Problemas</p>
+          <p><strong>Funcionamiento Adicional:</strong> Todo lo electrico le funciona sin problemas, faros de niebla, rines de aluminio</p>
+          <p><strong>Detalles:</strong> Mecanicamente funcionando sin problema, detalles esteticos que se pueden apreciar en fotos</p>
+        `;
+      }
+      document.getElementById('modal-car-info').classList.add('show');
+    }
+    function closeCarInfo() {
+      document.getElementById('modal-car-info').classList.remove('show');
+    }
+
   </script>
 
   <!-- Modales -->
@@ -1031,6 +1084,17 @@
     <button class="modal-next" onclick="nextImage()">›</button>
   </div>
 </div>
+
+  <div id="modal-car-info" class="modal">
+  <div class="modal-overlay" onclick="closeCarInfo()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeCarInfo()">
+      &times;
+    </button>
+    <h2 id="car-info-title"></h2>
+    <div id="car-info-content"></div>
+  </div>  
+  </div>
 
 </body>
 </html>
